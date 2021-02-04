@@ -10,14 +10,14 @@ import 'package:provider/provider.dart';
 import 'package:path/path.dart' as p;
 
 class Restore {
-  //method to restore database
+//method to restore database
   static Future<void> restore(BuildContext context) async {
     final dbNotifier = Provider.of<AppDatabaseNotifier>(context, listen: false);
     final dbFolder = await getApplicationDocumentsDirectory();
     final dbLocation = p.join(dbFolder.path, 'db.sqlite');
 
     dbNotifier.database.close();
-    //acess file
+//acess file
     FilePickerResult result = await FilePicker.platform.pickFiles();
     if (result != null) {
       if (result.files.single.name != 'db_backup.sqlite') {
@@ -39,14 +39,14 @@ class Restore {
     }
   }
 
-//Metodo encargado de hacer la restauración de la copia de seguridad.
+//Method in charge of restoring the backup.
   static Future<bool> futureBuilderFile(
       String dbLocation, Uint8List updatedContent) async {
     await File(dbLocation).writeAsBytes(updatedContent, flush: true);
     return true;
   }
 
-//Metodo encargado de retornar la respuesta mientras se restaura la copia de seguridad.
+//Method responsible for returning the response while restoring the backup.
   static Future<Widget> futureBuilderRes(Future<bool> res, BuildContext context,
       AppDatabaseNotifier appDatabaseNotifier) async {
     if (res != null) {
