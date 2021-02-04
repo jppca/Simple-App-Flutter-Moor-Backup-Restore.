@@ -22,6 +22,7 @@ class Backup {
     return null;
   }
 
+  //method to make a backup
   static Future<void> backup(BuildContext context) async {
     final dbFolder = await getApplicationDocumentsDirectory();
     final file = File(p.join(dbFolder.path, 'db.sqlite'));
