@@ -1,4 +1,4 @@
-# app_flutter_moor_backup_restore
+# simple_app_flutter_moor_backup_restore
 
 A new Flutter project.
 
